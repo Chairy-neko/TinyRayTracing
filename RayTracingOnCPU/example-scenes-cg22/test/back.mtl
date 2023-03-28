@@ -1,0 +1,24 @@
+newmtl back:DiffuseWhite
+Kd 0.79 0.76 0.73
+Ks 0 0 0
+Kt 1 1 1
+Ns 1
+Ni 1
+newmtl back:LeftWall
+Kd 0 0.24 0.9
+Ks 0 0 0
+Kt 1 1 1
+Ns 1
+Ni 1
+newmtl back:RightWall
+Kd 0.2 0.76 0
+Ks 0 0 0
+Kt 1 1 1
+Ns 1
+Ni 1
+newmtl back:Light
+Kd 0 0 0
+Ks 0 0 0 
+Kt 1 1 1
+Ns 1
+Ni 1
