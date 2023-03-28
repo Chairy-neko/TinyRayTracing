@@ -6,37 +6,37 @@ C:\src\vcpkg\installed\x64-windows\include\opencv2\objdetect\aruco_board.hpp(1,1
 D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\bvh1.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
 D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\bvh1.h(146,25): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
 D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\bvh1.h(155,26): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\pathtracing.h(10,23): warning C4305: “初始化”: 从“double”到“float”截断
 D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\pathtracing.h(31,45): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
 D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\pathtracing.h(72,45): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
-D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\pathtracing.h(175,15): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\pathtracing.h(175,40): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\pathtracing.h(178,33): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
+D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\pathtracing.h(177,15): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\pathtracing.h(177,40): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\pathtracing.h(180,33): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
           with
           [
               T=float
           ]
-D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\pathtracing.h(178,64): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
+D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\pathtracing.h(180,64): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
           with
           [
               T=float
           ]
-D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\pathtracing.h(178,95): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
+D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\pathtracing.h(180,95): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
           with
           [
               T=float
           ]
-D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\pathtracing.h(187,45): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
-D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\pathtracing.h(198,53): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\pathtracing.h(218,26): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\pathtracing.h(218,60): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\pathtracing.h(218,94): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\pathtracing.h(241,29): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\main.cpp(346,45): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
-D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\main.cpp(364,19): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
-D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\main.cpp(365,86): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
-D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\main.cpp(379,51): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\main.cpp(379,48): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\main.cpp(349,25): warning C4101: “current”: 未引用的局部变量
+D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\pathtracing.h(189,45): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\pathtracing.h(220,26): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\pathtracing.h(220,60): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\pathtracing.h(220,94): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\pathtracing.h(240,29): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\main.cpp(60,45): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\main.cpp(78,19): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
+D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\main.cpp(79,86): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\main.cpp(97,51): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\main.cpp(97,48): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\main.cpp(63,25): warning C4101: “current”: 未引用的局部变量
   scene.cpp
 C:\src\vcpkg\installed\x64-windows\include\Eigen\src\Core\arch\Default\Half.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
 C:\src\vcpkg\installed\x64-windows\include\Eigen\src\Core\arch\Default\BFloat16.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失

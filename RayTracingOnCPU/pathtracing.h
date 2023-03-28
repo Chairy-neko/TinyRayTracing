@@ -113,6 +113,7 @@ Ray nextRay(HitResult &res, vec3 dir, Scene &scene)
             }
             else
             {
+                // printf("all specular\n");
                 // only specular for refraction material
                 // vec3 incoming = -dir;
                 vec3 reflect_ray = reflect(-dir, normal); // reflect ray direction
@@ -168,9 +169,11 @@ vec3 shade(HitResult &res,
     { // texture
         vec3 bc = res.triangle.findBaryCor(res.hitpoint);
         // garcov.print();
-        double row = res.triangle.vt[0].x * bc.x + res.triangle.vt[1].x * bc.y + res.triangle.vt[2].x * bc.z; //
+        // double row = res.triangle.vt[0].x * bc.x + res.triangle.vt[1].x * bc.y + res.triangle.vt[2].x * bc.z; //
+        double col = res.triangle.vt[0].x * bc.x + res.triangle.vt[1].x * bc.y + res.triangle.vt[2].x * bc.z; //
         // std::cout << p.f.vt1.vtx << " " << p.f.vt2.vtx << " " << p.f.vt3.vtx << std::endl;
-        double col = res.triangle.vt[0].y * bc.x + res.triangle.vt[1].y * bc.y + res.triangle.vt[2].y * bc.z;
+        // double col = res.triangle.vt[0].y * bc.x + res.triangle.vt[1].y * bc.y + res.triangle.vt[2].y * bc.z;
+        double row = res.triangle.vt[0].y * bc.x + res.triangle.vt[1].y * bc.y + res.triangle.vt[2].y * bc.z;
         double irow = row - floor(row), icol = col - floor(col);
         int r = irow * m.map_height, c = icol * m.map_width;
         // std::cout << m->name << " " << r << " " << c << std::endl;
@@ -291,7 +294,7 @@ vec3 shade(HitResult &res,
             else
             {
                 //printf("TRANSMISSTION\n");
-                L_indir += intensity;
+                L_indir += m.Tr * intensity;
             }
         }
     }

@@ -27,7 +27,7 @@ using namespace std;
 //const string xml_path = "example-scenes-cg22/test/back.xml";
 //const string obj_path = "example-scenes-cg22/test/back.obj";
 
-const int SAMPLE = 10;
+const int SAMPLE = 20;
 
 void imshow(double *SRC, string index, int img_width, int img_height)
 {
