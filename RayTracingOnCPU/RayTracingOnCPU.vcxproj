@@ -141,17 +141,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bvh.cpp" />
+    <ClCompile Include="camera.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="material.cpp" />
     <ClCompile Include="pathtracing.cpp" />
     <ClCompile Include="scene.cpp" />
-    <ClCompile Include="test.cpp" />
+    <ClCompile Include="triangle.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="bvh1.h" />
-    <ClInclude Include="bvh2.h" />
+    <ClInclude Include="bvh.h" />
+    <ClInclude Include="camera.h" />
+    <ClInclude Include="light.h" />
     <ClInclude Include="pathtracing.h" />
     <ClInclude Include="ray.h" />
     <ClInclude Include="scene.h" />
+    <ClInclude Include="triangle.h" />
+    <ClInclude Include="material.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

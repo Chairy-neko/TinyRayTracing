@@ -1,6 +1,6 @@
 #include "svpng.inc"
 #include "scene.h"
-#include "bvh1.h"
+#include "bvh.h"
 #include "pathtracing.h"
 
 #include <iostream>
@@ -10,24 +10,24 @@
 #include <time.h>
 using namespace std;
 
- const string basedir = "example-scenes-cg22/staircase";
- const string mtl_path = "example-scenes-cg22/staircase/staircase.mtl";
- const string xml_path = "example-scenes-cg22/staircase/staircase.xml";
- const string obj_path = "example-scenes-cg22/staircase/staircase.obj";
+//const string basedir = "example-scenes-cg22/staircase";
+//const string mtl_path = "example-scenes-cg22/staircase/staircase.mtl";
+//const string xml_path = "example-scenes-cg22/staircase/staircase.xml";
+//const string obj_path = "example-scenes-cg22/staircase/staircase.obj";
 //const string basedir = "example-scenes-cg22/cornell-box";
 //const string mtl_path = "example-scenes-cg22/cornell-box/cornell-box.mtl";
 //const string xml_path = "example-scenes-cg22/cornell-box/cornell-box.xml";
 //const string obj_path = "example-scenes-cg22/cornell-box/cornell-box.obj";
-//const string basedir = "example-scenes-cg22/veach-mis";
-//const string mtl_path = "example-scenes-cg22/veach-mis/veach-mis.mtl";
-//const string xml_path = "example-scenes-cg22/veach-mis/veach-mis.xml";
-//const string obj_path = "example-scenes-cg22/veach-mis/veach-mis.obj";
+const string basedir = "example-scenes-cg22/veach-mis";
+const string mtl_path = "example-scenes-cg22/veach-mis/veach-mis.mtl";
+const string xml_path = "example-scenes-cg22/veach-mis/veach-mis.xml";
+const string obj_path = "example-scenes-cg22/veach-mis/veach-mis.obj";
 //const string basedir = "example-scenes-cg22/test";
 //const string mtl_path = "example-scenes-cg22/test/back.mtl";
 //const string xml_path = "example-scenes-cg22/test/back.xml";
 //const string obj_path = "example-scenes-cg22/test/back.obj";
 
-const int SAMPLE = 20;
+const int SAMPLE = 64;
 
 void imshow(double *SRC, string index, int img_width, int img_height)
 {

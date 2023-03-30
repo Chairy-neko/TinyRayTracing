@@ -5,7 +5,8 @@ using namespace glm;
 const int DIFFUSE      = 0;
 const int SPECULAR     = 1;
 const int TRANSMISSION = 2;
-const int INVALID = 3;
+const int TREFLECTION = 3;
+const int INVALID = 4;
 
 class Ray
 {

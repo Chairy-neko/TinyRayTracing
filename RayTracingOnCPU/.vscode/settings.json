@@ -53,6 +53,7 @@
         "condition_variable": "cpp",
         "list": "cpp",
         "iomanip": "cpp",
-        "mutex": "cpp"
+        "mutex": "cpp",
+        "unordered_set": "cpp"
     }
 }
