@@ -1,6 +1,6 @@
 #include "camera.h"
 
-void Camera::SetCamera()
+void Camera::setCamera()
 {
     double theta = radians(fovy);
     double h = tan(theta / 2);
@@ -16,11 +16,11 @@ void Camera::SetCamera()
     lower_left_corner = eye - horizontal / 2.0f - vertical / 2.0f - w;
 }
 
-Ray Camera::get_ray(float s, float t)
+Ray Camera::getRay(float s, float t)
 {
 
     Ray ray;
-    ray.startPoint = eye;
+    ray.startpoint = eye;
     ray.direction = lower_left_corner + s * horizontal + t * vertical - eye;
     ray.direction = normalize(ray.direction);
 

@@ -21,7 +21,7 @@ void Scene::readxml(string xml_path) // get camera & lights
     XMLElement *xml_up = xml_camera->FirstChildElement("up");
     camera.up = vec3(stof(xml_up->Attribute("x")), stof(xml_up->Attribute("y")), stof(xml_up->Attribute("z")));
     XMLElement *xml_light = xml_camera->NextSiblingElement("light");
-    camera.SetCamera();
+    camera.setCamera();
     while (xml_light)
     {
         string mtl_name = xml_light->Attribute("mtlname");
@@ -48,7 +48,7 @@ void Scene::readxml(string xml_path) // get camera & lights
             }
         }
         lights.push_back(Light(mtl_name, radiance));
-        materials[mtl_name].isEmissive = true;
+        materials[mtl_name].is_emissive = true;
         materials[mtl_name].radiance = radiance;
         xml_light = xml_light->NextSiblingElement("light");
     }
@@ -169,7 +169,7 @@ void Scene::readobj(string obj_path)
                     if (f[fi][index] == '/' && tmp == 0)
                     {
                         tmpindex = stoi(f[fi].substr(tmp, index - tmp)) - 1;
-                        triangle.p[fi] = vertices[tmpindex];
+                        triangle.v[fi] = vertices[tmpindex];
                         tmp = index + 1;
                     }
                     else if (f[fi][index] == '/' && tmp != 0)
@@ -193,21 +193,15 @@ void Scene::readobj(string obj_path)
                 }
                 tmp = 0;
             }
-            triangle.normal = normalize(cross(triangle.p[1] - triangle.p[0], triangle.p[2] - triangle.p[0]));
-            triangle.center = (triangle.p[0] + triangle.p[1] + triangle.p[2]) / vec3(3.0, 3.0, 3.0);
+            triangle.normal = normalize(cross(triangle.v[1] - triangle.v[0], triangle.v[2] - triangle.v[0]));
+            triangle.center = (triangle.v[0] + triangle.v[1] + triangle.v[2]) / vec3(3.0, 3.0, 3.0);
             triangle.mtl_name = mtl_name;
-            triangle.id = triangleid++;
-            if(materials[mtl_name].isEmissive){
-                triangle.isEmissive = true;
-                // total_area += triangle.calAera();
-                materials[mtl_name].area += triangle.calAera();
-                // triangle.area = total_area;
-                light_triangles.push_back(triangle);
-                // materials[mtl_name].triangles.push_back(triangle);
-
-                // materials[mtl_name].area += triangle.calAera();
-                // triangle.area = materials[mtl_name].area;
-                // materials[mtl_name].triangles.push_back(triangle);
+            if(materials[mtl_name].is_emissive){
+                triangle.is_emissive = true;
+                double triangle_area = triangle.calAera();
+                materials[mtl_name].area += triangle_area;// mtl total area
+                triangle.area = materials[mtl_name].area;
+                materials[mtl_name].triangles.push_back(triangle);
             }
             triangles.push_back(triangle);
         }
@@ -217,79 +211,3 @@ void Scene::readobj(string obj_path)
     printf("num of vt: %d\n", (int)vt.size());
     printf("num of triangles: %d\n", (int)triangles.size());
 }
-
-//void Camera::SetCamera()
-//{
-//    double theta = radians(fovy);
-//    double h = tan(theta / 2);
-//    float viewport_height = 2.0 * h;
-//    float viewport_width = aspect_ratio * viewport_height;
-//
-//    vec3 w = normalize(eye - lookat);
-//    vec3 u = normalize(cross(up, w));
-//    vec3 v = cross(w, u);
-//
-//    horizontal = viewport_width * u;
-//    vertical = viewport_height * v;
-//    lower_left_corner = eye - horizontal / 2.0f - vertical / 2.0f - w;
-//}
-
-//Ray Camera::get_ray(float s, float t)
-//{
-//
-//    Ray ray;
-//    ray.startPoint = eye;
-//    ray.direction = lower_left_corner + s * horizontal + t * vertical - eye;
-//    ray.direction = normalize(ray.direction);
-//
-//    return ray;
-//}
-//
-//void Camera::Print(){
-//    printf("Camera:\n");
-//    printf("fovy: %f ", fovy);
-//    printf("eye: (%f, %f, %f) ", eye.x, eye.y, eye.z);
-//    printf("lookat: (%f, %f, %f) ", lookat.x, lookat.y, lookat.z);
-//    printf("up: (%f, %f, %f) \n", up.x, up.y, up.z);
-//}
-
-
-
-//void Material::readinMap() {
-//    std::cout << "Reading file " << map_Kd << std::endl;
-//
-//    img = cv::imread(map_Kd); //read in file
-//
-//    if (img.empty()) {
-//        std::cout << "Cannot read file: " << map_Kd << std::endl;
-//    }
-//    map_height = img.rows, map_width = img.cols;
-//}
-
-//double Triangle::calAera()
-//{
-//    double a = length(p[1] - p[0]), b = length(p[2] - p[0]), c = length(p[2] - p[1]); // length of a,b,c
-//    double cos_c = (a * a + b * b - c * c) / (2 * a * b);                             // 余弦定理
-//    double sin_c = sqrt(1 - pow(cos_c, 2));
-//    double aera = a * b * sin_c / 2;
-//    return aera;
-//}
-//
-//vec3 Triangle::findBaryCor(vec3 hitp)
-//{
-//    Eigen::Matrix<double, 4, 3> A;
-//    Eigen::Matrix<double, 4, 1> B;
-//    Eigen::MatrixXd res;
-//
-//    A << p[0].x, p[1].x, p[2].x,
-//        p[0].y, p[1].y, p[2].y,
-//        p[0].z, p[1].z, p[2].z,
-//        1, 1, 1;
-//    B << hitp.x, hitp.y, hitp.z, 1;
-//
-//    res = A.colPivHouseholderQr().solve(B);
-//    vec3 ret;
-//    ret.x = res(0, 0), ret.y = res(1, 0), ret.z = res(2, 0);
-//
-//    return ret;
-//}

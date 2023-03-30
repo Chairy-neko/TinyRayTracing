@@ -8,9 +8,9 @@ public:
     Camera() {}
     ~Camera() {}
 
-    void SetCamera();
-    void Print();
-    Ray get_ray(float s, float t);//get ray at (s,t)
+    void setCamera();// set camera 
+    Ray getRay(float u, float v);// get ray at (u,v)
+    void Print();// print info for debugging
 
     double fovy = 90;
     vec3 eye = vec3(278.0, 273.0, -800.0);

@@ -10,34 +10,21 @@
 #include <time.h>
 using namespace std;
 
-//const string basedir = "example-scenes-cg22/staircase";
-//const string mtl_path = "example-scenes-cg22/staircase/staircase.mtl";
-//const string xml_path = "example-scenes-cg22/staircase/staircase.xml";
-//const string obj_path = "example-scenes-cg22/staircase/staircase.obj";
-//const string basedir = "example-scenes-cg22/cornell-box";
-//const string mtl_path = "example-scenes-cg22/cornell-box/cornell-box.mtl";
-//const string xml_path = "example-scenes-cg22/cornell-box/cornell-box.xml";
-//const string obj_path = "example-scenes-cg22/cornell-box/cornell-box.obj";
-const string basedir = "example-scenes-cg22/veach-mis";
-const string mtl_path = "example-scenes-cg22/veach-mis/veach-mis.mtl";
-const string xml_path = "example-scenes-cg22/veach-mis/veach-mis.xml";
-const string obj_path = "example-scenes-cg22/veach-mis/veach-mis.obj";
-//const string basedir = "example-scenes-cg22/test";
-//const string mtl_path = "example-scenes-cg22/test/back.mtl";
-//const string xml_path = "example-scenes-cg22/test/back.xml";
-//const string obj_path = "example-scenes-cg22/test/back.obj";
+string basedir = "";
+string mtl_path = "";
+string xml_path = "";
+string obj_path = "";
 
-const int SAMPLE = 64;
+const int SAMPLE = 10;
 
 void imshow(double *SRC, string index, int img_width, int img_height)
 {
 
     unsigned char *image = new unsigned char[img_width * img_height * 3]; // img buffer
-    // memset(image, 0.0, sizeof(double) * img_width * img_height * 3);
     unsigned char *p = image;
     double *S = SRC; //
 
-    string name = basedir + "/image" + index + ".png"; 
+    string name = basedir + "/image" + index + ".png";
     FILE *fp;
     fopen_s(&fp, name.c_str(), "wb");
 
@@ -57,6 +44,15 @@ void imshow(double *SRC, string index, int img_width, int img_height)
 
 int main()
 {
+    printf("Please input base directory of the scene:\n");
+    cin >> basedir;
+    printf("Please input .mtl file path of the scene:\n");
+    cin >> mtl_path;
+    printf("Please input .xml file path of the scene:\n");
+    cin >> xml_path;
+    printf("Please input .obj file path of the scene:\n");
+    cin >> obj_path;
+
     static std::default_random_engine e(time(NULL));
     static std::uniform_real_distribution<double> u1(0, 1);
 
@@ -76,8 +72,9 @@ int main()
 
     double *image = new double[scene.img_width * scene.img_height * 3];
     memset(image, 0.0, sizeof(double) * scene.img_width * scene.img_height * 3);
-    BVHNode *root = buildBVHwithSAH(scene.triangles, 0, scene.triangles.size() - 1, 8);
+    BVHNode *root = buildBVH(scene.triangles, 0, scene.triangles.size() - 1, 8);
     printf("Build BVH down.\n");
+
     omp_set_num_threads(50); // parallel
 #pragma omp parallel for
     for (int k = 0; k < SAMPLE; k++)
@@ -94,13 +91,13 @@ int main()
                 x += (u1(e) - 0.5f) / double(scene.img_width);
                 y += (u1(e) - 0.5f) / double(scene.img_height);
 
-                Ray ray = scene.camera.get_ray(x, y);
+                Ray ray = scene.camera.getRay(x, y);
 
-                HitResult res = hitBVH(ray, scene.triangles, root);
+                HitRecord rec = traverseBVH(ray, scene.triangles, root);
                 vec3 color = vec3(0);
-                if (res.isHit)
+                if (rec.is_hit)
                 {
-                    color = shade(res, -ray.direction, scene, root) / (float)SAMPLE;
+                    color = shade(rec, -ray.direction, scene, root) / (float)SAMPLE;
                 }
                 *p += color.x;
                 p++; // R
@@ -114,7 +111,6 @@ int main()
         }
     }
     imshow(image, to_string(SAMPLE), scene.img_width, scene.img_height);
-    printf("num_kd: %d, num_ks: %d", num_kd, num_ks);
     std::cerr << "\nDone.\n";
     end = clock();
     cout << (double)(end - start) / CLOCKS_PER_SEC << endl;
