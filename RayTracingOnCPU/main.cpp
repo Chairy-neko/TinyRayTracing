@@ -10,12 +10,11 @@
 #include <time.h>
 using namespace std;
 
+int SAMPLE = 256;
 string basedir = "";
 string mtl_path = "";
 string xml_path = "";
 string obj_path = "";
-
-const int SAMPLE = 10;
 
 void imshow(double *SRC, string index, int img_width, int img_height)
 {
@@ -52,6 +51,8 @@ int main()
     cin >> xml_path;
     printf("Please input .obj file path of the scene:\n");
     cin >> obj_path;
+    printf("Please input SPP:\n");
+    scanf("%d", &SAMPLE);
 
     static std::default_random_engine e(time(NULL));
     static std::uniform_real_distribution<double> u1(0, 1);

@@ -1,1 +1,0 @@
-D:\Data\codes\vs\RayTracingOnCPU\RayTracingOnCPU\x64\Debug\RayTracingOnCPU.vcxproj.CopyComplete
